@@ -8,22 +8,22 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className="container mx-auto px-4 py-8">
-        <nav className="flex justify-center gap-4 mb-8">
+        <nav className="flex justify-center space-x-6 mb-8">
           <Link
-            to="/students"
-            className="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition duration-200"
+            to="/students" 
+            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
           >
             Students
           </Link>
           <Link
             to="/faculty"
-            className="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition duration-200"
+            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
           >
             Faculty
           </Link>
           <Link
             to="/bulk-upload"
-            className="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition duration-200"
+            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
           >
             Bulk Upload
           </Link>

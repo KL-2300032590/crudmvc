@@ -60,99 +60,115 @@ const Facultylist = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <h1 className="text-3xl font-bold text-center mb-8 text-black">
-        Faculty Management System
-      </h1>
+    <div className="min-h-screen bg-gray-100">
+      <div className="container mx-auto px-4 py-8">
+        <h1 className="text-3xl font-bold text-center mb-8 text-indigo-900">
+          Faculty Management System
+        </h1>
 
-      <form
-        onSubmit={handleSubmit}
-        className="mb-8 bg-white rounded-lg p-6 space-y-4"
-      >
-        <div className="relative">
-          <FaUserTie className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-          <input
-            type="text"
-            placeholder="Name"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            className="w-full p-2 pl-10 border rounded-lg text-base sm:text-lg focus:ring-2 focus:ring-black focus:border-black"
-          />
-        </div>
-        <div className="relative">
-          <FaEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-          <input
-            type="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={(e) =>
-              setFormData({ ...formData, email: e.target.value })
-            }
-            className="w-full p-2 pl-10 border rounded-lg text-base sm:text-lg focus:ring-2 focus:ring-black focus:border-black"
-          />
-        </div>
-        <input
-          type="text"
-          placeholder="Department"
-          value={formData.department}
-          onChange={(e) =>
-            setFormData({ ...formData, department: e.target.value })
-          }
-          className="w-full p-2 border rounded-lg text-base sm:text-lg focus:ring-2 focus:ring-black focus:border-black"
-        />
-        <button
-          type="submit"
-          className="w-full bg-black text-white p-3 rounded-lg hover:bg-gray-800 text-base sm:text-lg flex items-center justify-center gap-2 transition duration-200"
-        >
-          {editing ? (
-            <FaEdit className="text-xl" />
-          ) : (
-            <FaPlus className="text-xl" />
-          )}
-          {editing ? "Update Faculty" : "Add Faculty"}
-        </button>
-      </form>
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="md:col-span-1">
+            <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-lg p-6 space-y-4">
+              <h2 className="text-xl font-bold text-indigo-900 mb-6">
+                {editing ? "Edit Faculty" : "Add New Faculty"}
+              </h2>
+              
+              <div className="space-y-3">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                  <div className="relative">
+                    <FaUserTie className="absolute left-3 top-1/2 transform -translate-y-1/2 text-indigo-500" />
+                    <input
+                      type="text"
+                      placeholder="Enter name"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    />
+                  </div>
+                </div>
 
-      <div className="space-y-4">
-        {faculty.map((member) => (
-          <div
-            key={member._id}
-            className="bg-white duration-200 p-6 rounded-lg flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
-          >
-            <div className="w-full sm:w-auto">
-              <div className="flex items-center gap-2">
-                <h3 className="font-bold text-lg sm:text-xl text-black">
-                  {member.name}
-                </h3>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                  <div className="relative">
+                    <FaEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-indigo-500" />
+                    <input
+                      type="email"
+                      placeholder="Enter email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Department</label>
+                  <input
+                    type="text"
+                    placeholder="Enter department"
+                    value={formData.department}
+                    onChange={(e) => setFormData({ ...formData, department: e.target.value })}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  />
+                </div>
               </div>
-              <div className="flex items-center gap-2 mt-2">
-                <FaEnvelope className="text-gray-400" />
-                <p className="text-sm sm:text-base text-gray-600">
-                  {member.email}
-                </p>
-              </div>
-              <p className="text-sm sm:text-base text-gray-600 mt-1">
-                Department: {member.department}
-              </p>
-            </div>
-            <div className="flex gap-3 w-full sm:w-auto">
+
               <button
-                onClick={() => handleEdit(member)}
-                className="flex-1 sm:flex-none bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 text-sm sm:text-base flex items-center justify-center gap-2 transition duration-200"
+                type="submit"
+                className="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition duration-200 flex items-center justify-center gap-2"
               >
-                <FaEdit />
-                Edit
+                {editing ? <FaEdit /> : <FaPlus />}
+                {editing ? "Update Faculty" : "Add Faculty"}
               </button>
-              <button
-                onClick={() => handleDelete(member._id)}
-                className="flex-1 sm:flex-none bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 text-sm sm:text-base flex items-center justify-center gap-2 transition duration-200"
-              >
-                <FaTrash />
-                Delete
-              </button>
+            </form>
+          </div>
+
+          <div className="md:col-span-2">
+            <div className="grid gap-4">
+              {faculty.map((member) => (
+                <div
+                  key={member._id}
+                  className="bg-white rounded-xl shadow-md hover:shadow-lg transition duration-200 p-6"
+                >
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div>
+                      <h3 className="text-xl font-semibold text-indigo-900">
+                        {member.name}
+                      </h3>
+                      <div className="flex items-center gap-2 mt-2 text-gray-600">
+                        <FaEnvelope className="text-indigo-500" />
+                        <span>{member.email}</span>
+                      </div>
+                      <div className="mt-2">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800">
+                          Department: {member.department}
+                        </span>
+                      </div>
+                    </div>
+                    
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => handleEdit(member)}
+                        className="inline-flex items-center px-4 py-2 border border-indigo-500 text-indigo-500 rounded-lg hover:bg-indigo-50 transition duration-200"
+                      >
+                        <FaEdit className="mr-2" />
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => handleDelete(member._id)}
+                        className="inline-flex items-center px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition duration-200"
+                      >
+                        <FaTrash className="mr-2" />
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );
