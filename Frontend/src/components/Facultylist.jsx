@@ -3,7 +3,7 @@ import axios from "axios";
 import { FaUserTie, FaEdit, FaTrash, FaPlus, FaEnvelope } from "react-icons/fa";
 
 const Facultylist = () => {
-  const apiUrl = "http://localhost:3000/api/faculty";
+  const apiUrl = "https://crudmvc-1-5qnp.onrender.com/api/faculty";
   const [faculty, setFaculty] = useState([]);
   const [formData, setFormData] = useState({
     name: "",

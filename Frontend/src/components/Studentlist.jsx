@@ -9,7 +9,7 @@ import {
 } from "react-icons/fa";
 
 const Studentlist = () => {
-  const apiUrl = "http://localhost:3000/api/students";
+  const apiUrl = "https://crudmvc-1-5qnp.onrender.com/api/students";
   const [students, setStudents] = useState([]);
   const [formData, setFormData] = useState({
     firstName: "",
